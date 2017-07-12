@@ -7,4 +7,4 @@ PomoDo is a non-intrusive utility to track and manage your practice of the Pomod
 ### NuGet Packages
 NUnit and NUnit3TestAdapter are used in this solution for Unit testing. The versions can be found in the `packages.config` file. 
 
-To have Visual Studio NuGet handle retreiving the packages for you, see [Edward Wilde's StackOverflow answer.](https://stackoverflow.com/a/7619988/5012644). 
+To have Visual Studio NuGet handle retreiving the packages for you, see the [official Microsoft Docs page for Installing and Reinstalling Packages with Package Restore](https://docs.microsoft.com/en-us/nuget/consume-packages/package-restore). Alternatively, see [Edward Wilde's StackOverflow answer.](https://stackoverflow.com/a/7619988/5012644). 
