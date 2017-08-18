@@ -1,4 +1,6 @@
-﻿namespace PomoDo
+﻿using System.Windows.Forms;
+
+namespace PomoDo
 {
     partial class Dashboard
     {
@@ -28,8 +30,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.lbl_welcome = new System.Windows.Forms.Label();
             this.lbl_author = new System.Windows.Forms.Label();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openPomoDoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbl_welcome
@@ -53,6 +62,40 @@
             this.lbl_author.TabIndex = 1;
             this.lbl_author.Text = "Authored by Cognophile";
             // 
+            // notifyIcon
+            // 
+            this.notifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon.BalloonTipText = "PomoDo has been minimized to the system tray. To interact with it, double click t" +
+    "o open or left-click to access the menu.";
+            this.notifyIcon.BalloonTipTitle = "PomoDo";
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "PomoDo - Pomodoro Assistant";
+            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_MouseDoubleClick_OpenApplication);
+            this.notifyIcon.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_RightClick_OpenMenu);
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openPomoDoToolStripMenuItem,
+            this.quitToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip1";
+            this.contextMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.contextMenuStrip.Size = new System.Drawing.Size(154, 48);
+            // 
+            // openPomoDoToolStripMenuItem
+            // 
+            this.openPomoDoToolStripMenuItem.Name = "openPomoDoToolStripMenuItem";
+            this.openPomoDoToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.openPomoDoToolStripMenuItem.Text = "Open PomoDo";
+            this.openPomoDoToolStripMenuItem.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_MouseDoubleClick_OpenApplication);
+            // 
+            // quitToolStripMenuItem
+            // 
+            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.quitToolStripMenuItem.Text = "Quit";
+            this.quitToolStripMenuItem.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_RightClickMenu_Quit);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -60,8 +103,11 @@
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.lbl_author);
             this.Controls.Add(this.lbl_welcome);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Dashboard";
             this.Text = "PomoDo";
+            this.Resize += new System.EventHandler(this.TrayMinimizerForm_Resize);
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -71,6 +117,10 @@
 
         private System.Windows.Forms.Label lbl_welcome;
         private System.Windows.Forms.Label lbl_author;
+        private NotifyIcon notifyIcon;
+        private ContextMenuStrip contextMenuStrip;
+        private ToolStripMenuItem openPomoDoToolStripMenuItem;
+        private ToolStripMenuItem quitToolStripMenuItem;
     }
 }
 
