@@ -15,7 +15,7 @@ namespace PomoDo
     {
         public Dashboard() => InitializeComponent();
 
-        private void TrayMinimizerForm_Resize(object sender, EventArgs e)
+        private void TrayMinimizeFormResize(object sender, EventArgs e)
         {
             if (FormWindowState.Minimized == this.WindowState)
             {
@@ -30,7 +30,7 @@ namespace PomoDo
             }
         }
 
-        private void NotifyIcon_MouseDoubleClick_OpenApplication(object sender, MouseEventArgs e)
+        private void NotifyIconMouseDoubleClickOpenApplication(object sender, MouseEventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
             this.ShowInTaskbar = true;
@@ -38,7 +38,7 @@ namespace PomoDo
             this.Show();
         }
 
-        private void NotifyIcon_RightClick_OpenMenu(object sender, MouseEventArgs e)
+        private void NotifyIconRightClickOpenMenu(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
@@ -46,7 +46,7 @@ namespace PomoDo
             }
         }
 
-        private void NotifyIcon_RightClickMenu_Quit(object sender, MouseEventArgs e)
+        private void NotifyIconRightClickMenuQuitApplication(object sender, MouseEventArgs e)
         {
             Application.Exit();
         }
