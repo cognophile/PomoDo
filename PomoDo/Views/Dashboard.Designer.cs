@@ -40,6 +40,7 @@ namespace PomoDo
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
+            
             // 
             // lbl_welcome
             // 
@@ -51,6 +52,7 @@ namespace PomoDo
             this.lbl_welcome.TabIndex = 0;
             this.lbl_welcome.Text = "Welcome to PomoDo";
             this.lbl_welcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            
             // 
             // lbl_author
             // 
@@ -61,17 +63,20 @@ namespace PomoDo
             this.lbl_author.Size = new System.Drawing.Size(118, 13);
             this.lbl_author.TabIndex = 1;
             this.lbl_author.Text = "Authored by Cognophile";
+            
             // 
             // notifyIcon
             // 
             this.notifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.notifyIcon.BalloonTipText = "PomoDo has been minimized to the system tray. To interact with it, double click t" +
-    "o open or left-click to access the menu.";
+    "o open or right-click to access the menu.";
             this.notifyIcon.BalloonTipTitle = "PomoDo";
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "PomoDo - Pomodoro Assistant";
-            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_MouseDoubleClick_OpenApplication);
-            this.notifyIcon.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_RightClick_OpenMenu);
+            // Event Handlers
+            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIconMouseDoubleClickOpenApplication);
+            this.notifyIcon.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NotifyIconRightClickOpenMenu);
+            
             // 
             // contextMenuStrip
             // 
@@ -79,24 +84,30 @@ namespace PomoDo
             this.openPomoDoToolStripMenuItem,
             this.quitToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip1";
+            this.contextMenuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.contextMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip.Size = new System.Drawing.Size(154, 48);
+            this.contextMenuStrip.Size = new System.Drawing.Size(154, 70);
+            
             // 
             // openPomoDoToolStripMenuItem
             // 
             this.openPomoDoToolStripMenuItem.Name = "openPomoDoToolStripMenuItem";
             this.openPomoDoToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.openPomoDoToolStripMenuItem.Text = "Open PomoDo";
-            this.openPomoDoToolStripMenuItem.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_MouseDoubleClick_OpenApplication);
+            // Event Handlers
+            this.openPomoDoToolStripMenuItem.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NotifyIconMouseDoubleClickOpenApplication);
+            
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
             this.quitToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.quitToolStripMenuItem.Text = "Quit";
-            this.quitToolStripMenuItem.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_RightClickMenu_Quit);
+            // Event Handlers
+            this.quitToolStripMenuItem.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NotifyIconRightClickMenuQuitApplication);
+            
             // 
-            // Dashboard
+            // Dashboard Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -106,7 +117,7 @@ namespace PomoDo
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Dashboard";
             this.Text = "PomoDo";
-            this.Resize += new System.EventHandler(this.TrayMinimizerForm_Resize);
+            this.Resize += new System.EventHandler(this.TrayMinimizeFormResize);
             this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
